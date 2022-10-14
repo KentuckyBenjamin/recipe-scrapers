@@ -94,14 +94,14 @@ def make_markdown_recipe(url):
 	conn = sqlite3.connect('recipe.db', check_same_thread=False)
 	markdown_df = pd.read_sql(statement, conn)
 	md_image_string = f"![]({markdown_df.iloc[0]['image']})"
-	md_title_string = f"##{markdown_df.iloc[0]['title']}"
+	md_title_string = f"#{markdown_df.iloc[0]['title']}"
 	print(md_image_string)
 	print(md_title_string)
 	
-	with open('test.md', 'a') as markdown_recipe:
+	with open('test1.md', 'a') as markdown_recipe:
+		markdown_recipe.write(md_title_string)		
 		markdown_recipe.write(md_image_string)
-		markdown_recipe.write('  ')
-		markdown_recipe.write(md_title_string)
+		markdown_recipe.write('<br>')
 
 # ------------------------------------- #
 # EXECUTE FUNCTIONS
